@@ -1,12 +1,20 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import styles from './styles';
+import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
 
-const View2 = ({ navigation, route }) => (
-    <View style={styles.containerStyle}>
-       <Text style={{ color: '#fff', position: 'absolute', top: 10, right: 50 }}>
-            Welcome:- {route.params?.data}</Text>
+const View3 = () => {
+    const userData = useSelector(state => state.user.userData)
+   return <View style={styles.containerStyle}>
+        <Text style={styles.welcomeTextStyle}>
+            Welcome:- {userData}</Text>
     </View>
-);
+};
 
-export default View2;
+View3.propTypes = {
+    navigation: PropTypes.object,
+};
+
+
+export default View3;
